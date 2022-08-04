@@ -18,3 +18,13 @@ jobs:
         with:
           username: ${{ secrets.DOCKERHUB_USER }}
           password: ${{ secrets.DOCKERHUB_PASSWORD }}
+      - name: Docker Build & Push Actio
+        uses: docker/build-push-action@v3.1.0
+        with:
+          context: ./
+          file: ./Dockerfile
+          push: true
+          tags: |
+            rogeriop1990cv/kubenews:latest
+            rogeriop1990cv/kubenews:${{ github.run_number }}
+        
